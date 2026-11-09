@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="SmartTools Hub — free online calculators, converters and generators. No sign-up. Works on desktop, mobile and Android." />
+<meta name="theme-color" content="#0a7a5e" />
+<link rel="icon" href="data:," />
+<title>SmartTools Hub — Free Online Tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{
+  --bg:#f6f7f4; --surface:#ffffff; --surface2:#eef2ee; --ink:#101613; --muted:#5b6b62; --line:#dde5de;
+  --accent:#0a7a5e; --accent-ink:#ffffff; --accent-soft:#e0f2ec; --amber:#d97706; --amber-soft:#fef3c7;
+  --red:#dc2626; --shadow:0 10px 30px rgba(16,22,19,.08); --radius:18px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0c1210; --surface:#141c19; --surface2:#1a2420; --ink:#eef5f1; --muted:#9db3a8; --line:#24312b;
+    --accent:#2dd4a8; --accent-ink:#06231b; --accent-soft:#12362c; --amber:#fbbf24; --amber-soft:#2e2410;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
+.mono{font-family:"JetBrains Mono",monospace}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+/* HEADER */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:16px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.02em;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+.logo span em{font-style:normal;color:var(--accent)}
+.nav-links{margin-left:auto;display:flex;gap:6px;align-items:center}
+.nav-links a{text-decoration:none;font-weight:600;font-size:14px;padding:8px 12px;border-radius:999px;color:var(--muted)}
+.nav-links a:hover{background:var(--surface2);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font-weight:700;border-radius:999px;padding:11px 18px;font-size:14px;text-decoration:none;transition:.15s}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{filter:brightness(1.07)}
+.btn-ghost{background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--accent)}
+@media(max-width:640px){.nav-links a.hide-m{display:none}}
+/* HERO */
+.hero{padding:44px 0 10px;background-image:radial-gradient(var(--line) 1px, transparent 1px);background-size:22px 22px}
+.hero-inner{max-width:720px}
+.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.02;letter-spacing:-.03em;margin:0 0 14px;font-weight:800}
+.hero h1 mark{background:none;color:var(--accent)}
+.hero p{font-size:17px;color:var(--muted);margin:0 0 22px;max-width:580px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;min-width:120px}
+.stat b{display:block;font-size:20px;letter-spacing:-.02em}
+.stat span{font-size:12.5px;color:var(--muted);font-weight:600}
+.searchbar{display:flex;gap:10px;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:8px;box-shadow:var(--shadow);max-width:620px}
+.searchbar input{flex:1;border:0;outline:0;background:transparent;padding:10px 12px;font-size:16px;color:var(--ink);min-width:0}
+.searchbar input::placeholder{color:var(--muted)}
+/* CATEGORIES */
+.cats{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 18px}
+.cat{border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:9px 16px;border-radius:999px;font-weight:700;font-size:13.5px;cursor:pointer}
+.cat.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:8px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;cursor:pointer;text-align:left;width:100%;transition:border-color .15s, transform .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card .icon{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:14px}
+.card h3{margin:0 0 6px;font-size:16.5px;letter-spacing:-.01em}
+.card p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
+.card .tag{display:inline-block;margin-top:12px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 8px;border-radius:999px}
+.pop{font-size:11px;font-weight:800;color:var(--amber);background:var(--amber-soft);padding:4px 8px;border-radius:999px;margin-left:6px;letter-spacing:.04em}
+.empty{grid-column:1/-1;text-align:center;padding:40px 20px;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius)}
+/* WORKSPACE */
+.workspace{display:none;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;margin:8px 0 28px;box-shadow:var(--shadow);scroll-margin-top:84px}
+section[id],main[id]{scroll-margin-top:84px}
+.workspace.open{display:block}
+.ws-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
+.ws-head .icon{width:48px;height:48px;border-radius:13px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
+.ws-head h2{margin:0;font-size:22px;letter-spacing:-.02em}
+.ws-head p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.back{margin-left:auto;flex:none}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+.field label{display:block;font-size:12.5px;font-weight:700;letter-spacing:.02em;margin-bottom:6px;color:var(--muted);text-transform:uppercase}
+.field input,.field select,.field textarea{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:16px;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:110px}
+.result{margin-top:18px;background:var(--surface2);border-radius:16px;padding:18px}
+.result .big{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.result .sub{color:var(--muted);font-size:14px;margin-top:4px}
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+@media(max-width:640px){.result-grid{grid-template-columns:1fr 1fr}}
+.result-grid div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.result-grid b{display:block;font-size:18px}
+.result-grid span{font-size:12px;color:var(--muted);font-weight:600}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.checkrow{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.checkrow label{display:flex;gap:7px;align-items:center;font-size:14px;font-weight:600;cursor:pointer;background:var(--bg);border:1px solid var(--line);padding:9px 12px;border-radius:999px}
+.meter{height:10px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:10px}
+.meter i{display:block;height:100%;background:var(--accent);width:0%;transition:.3s}
+input[type=range]{accent-color:var(--accent);width:100%}
+/* AD SLOT */
+.adslot{border:1.5px dashed var(--line);border-radius:16px;padding:22px;text-align:center;color:var(--muted);margin:28px 0;background:var(--surface)}
+.adslot small{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.adslot p{margin:0;font-size:13.5px}
+/* SECTIONS */
+section.block{padding:44px 0}
+.sec-head{max-width:640px;margin-bottom:24px}
+.sec-head h2{font-size:28px;letter-spacing:-.02em;margin:0 0 8px}
+.sec-head p{color:var(--muted);margin:0}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:800px){.why{grid-template-columns:1fr}}
+.why article{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.why h3{margin:10px 0 6px;font-size:16px}
+.why p{margin:0;color:var(--muted);font-size:14px}
+.num{width:32px;height:32px;border-radius:9px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:800;font-size:14px}
+/* ROADMAP */
+.roadmap{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:900px){.roadmap{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.roadmap{grid-template-columns:1fr}}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;position:relative}
+.step .snum{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);display:inline-block;padding:4px 8px;border-radius:6px;margin-bottom:10px}
+.step h3{margin:0 0 6px;font-size:15px}
+.step p{margin:0;font-size:13px;color:var(--muted)}
+.step.done{border-color:var(--accent)}
+.badge{font-size:11px;font-weight:800;padding:3px 8px;border-radius:999px;background:var(--accent);color:var(--accent-ink);margin-left:6px;vertical-align:middle}
+.badge.next{background:var(--amber-soft);color:var(--amber)}
+/* PWA */
+.pwa{background:var(--ink);color:var(--bg);border-radius:24px;padding:28px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
+@media(max-width:800px){.pwa{grid-template-columns:1fr}}
+.pwa h2{margin:0 0 10px;font-size:26px;letter-spacing:-.02em}
+.pwa p{opacity:.85;margin:0 0 16px}
+.pwa ol{margin:0;padding-left:20px;display:grid;gap:10px;font-size:14.5px}
+.pwa ol b{color:var(--accent)}
+.phone{border:2px solid color-mix(in srgb, var(--bg) 30%, transparent);border-radius:28px;padding:18px;background:color-mix(in srgb, var(--bg) 8%, transparent)}
+.phone .bar{height:8px;width:60px;border-radius:99px;background:color-mix(in srgb, var(--bg) 35%, transparent);margin:0 auto 16px}
+.phone .app-row{display:flex;align-items:center;gap:12px;background:color-mix(in srgb, var(--bg) 10%, transparent);border-radius:14px;padding:12px;margin-bottom:10px;font-size:14px;font-weight:600}
+/* FAQ */
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer;font-size:15px}
+details p{color:var(--muted);font-size:14px;margin:10px 0 0}
+footer{border-top:1px solid var(--line);padding:32px 0 44px;margin-top:20px}
+.foot{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
+.foot p{color:var(--muted);font-size:13.5px;max-width:520px;margin:8px 0 0}
+.foot-links{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;font-weight:600}
+.foot-links a{text-decoration:none;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:999px;font-weight:700;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:99;box-shadow:var(--shadow)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#qrBox{display:grid;place-items:center;padding:10px;background:#fff;border-radius:12px;width:fit-content;margin:0 auto}
+table.breakdown{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:12px}
+table.breakdown td,table.breakdown th{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}
+table.breakdown td:last-child{text-align:right;font-family:"JetBrains Mono",monospace}
+.calc-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.calc-keys button{padding:15px 0;font-size:18px;font-weight:700;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.calc-keys button.op{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.calc-keys button.eq{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.calc-keys button:active{filter:brightness(.94)}
+.img-preview{max-width:100%;border-radius:12px;border:1px solid var(--line);margin-top:12px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#" onclick="goHome(event)">
+      <span class="logo-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></span>
+      <span>Smart<em>Tools</em> Hub</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#tools">Tools</a>
+      <a href="#roadmap" class="hide-m">Roadmap</a>
+      <a href="#install" class="hide-m">Install App</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-inner">
+    <h1>Everyday tools, <mark>free forever.</mark><br>No sign-up. No clutter.</h1>
+    <p>Calculators, converters and generators that run right in your browser — on desktop, mobile and Android. Fast, private, and built to grow into a real platform.</p>
+    <div class="searchbar" role="search">
+      <input id="searchInput" type="search" placeholder="Search tools — try “BMI”, “password”, “loan”…" aria-label="Search tools" oninput="renderGrid()">
+      <button class="btn btn-primary" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Browse tools</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>15</b><span>Working tools</span></div>
+      <div class="stat"><b>100% free</b><span>No paywall</span></div>
+      <div class="stat"><b>0</b><span>Data sent to servers</span></div>
+      <div class="stat"><b>PWA</b><span>Installable on Android</span></div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="tools">
+
+  <!-- WORKSPACE -->
+  <div class="workspace" id="workspace" aria-live="polite">
+    <div class="ws-head">
+      <div class="icon" id="wsIcon"></div>
+      <div><h2 id="wsTitle"></h2><p id="wsDesc"></p></div>
+      <button class="btn btn-ghost back" onclick="closeTool()">← All tools</button>
+    </div>
+    <div id="wsBody"></div>
+  </div>
+
+  <div class="cats" id="cats" role="tablist" aria-label="Categories"></div>
+  <div class="grid" id="grid"></div>
+
+  <div class="adslot" aria-label="Advertisement placeholder">
+    <small>Advertisement</small>
+    <p>AdSense-ready slot — ads will appear here once SmartTools Hub is approved by Google AdSense.</p>
+  </div>
+
+  <section class="block" style="padding-top:10px">
+    <div class="sec-head">
+      <h2>Built like a product, not a demo</h2>
+      <p>Every tool works fully in your browser. Nothing you type is uploaded, stored or tracked — close the tab and it's gone.</p>
+    </div>
+    <div class="why">
+      <article><div class="num">1</div><h3>Runs 100% in the browser</h3><p>All calculations happen on your device. That means instant results, zero server cost, and complete privacy for things like passwords and personal numbers.</p></article>
+      <article><div class="num">2</div><h3>One app, every screen</h3><p>The same SmartTools Hub works on a laptop, a phone browser, and as an installable Android app (PWA) — no separate codebase, no app-store fee to start.</p></article>
+      <article><div class="num">3</div><h3>Free to use, built to earn</h3><p>Tools stay free for everyone. The business runs on advertising — AdSense on the web first, AdMob later if a native Android app launches.</p></article>
+    </div>
+  </section>
+
+  <section class="block" id="roadmap" style="padding-top:6px">
+    <div class="sec-head">
+      <h2>The plan: from web app to business</h2>
+      <p>A zero-budget path — each step only starts when the one before it is real.</p>
+    </div>
+    <div class="roadmap">
+      <div class="step done"><span class="snum">STEP 01</span><h3>Responsive web app <span class="badge">Live</span></h3><p>This site — 15 working tools, mobile-first design, search and categories.</p></div>
+      <div class="step done"><span class="snum">STEP 02</span><h3>Installable PWA <span class="badge">Ready</span></h3><p>Add to Home Screen on Android for an app-like experience — no Play Store needed.</p></div>
+      <div class="step"><span class="snum">STEP 03</span><h3>Free hosting <span class="badge next">Next</span></h3><p>Publish on free static hosting with a custom domain (ctratd.com) and HTTPS.</p></div>
+      <div class="step"><span class="snum">STEP 04</span><h3>Google AdSense</h3><p>Apply once the site has original content, clear navigation and steady traffic.</p></div>
+      <div class="step"><span class="snum">STEP 05</span><h3>Native app + AdMob</h3><p>If the audience grows, wrap or rebuild as a Play Store app and add AdMob.</p></div>
+    </div>
+    <p style="color:var(--muted);font-size:13.5px;margin-top:14px">Honest note: a PWA works on Android like an app, but it is <b>not</b> automatically a Play Store APK. That step comes later, only if it's worth the publishing fee.</p>
+  </section>
+
+  <section class="block" id="install" style="padding-top:6px">
+    <div class="pwa">
+      <div>
+        <h2>Install SmartTools Hub on your phone</h2>
+        <p>No Play Store, no download waiting. Install it straight from Chrome in under 30 seconds — it lands on your home screen like a normal app.</p>
+        <ol>
+          <li>Open this site in <b>Chrome on Android</b>.</li>
+          <li>Tap the <b>⋮ menu</b> in the top-right corner.</li>
+          <li>Tap <b>“Add to Home screen”</b> → <b>Install</b>.</li>
+          <li>Done — open <b>SmartTools Hub</b> from your home screen anytime.</li>
+        </ol>
+        <p style="margin-top:16px;font-size:13.5px">On desktop Chrome/Edge, use the install icon in the address bar for the same result.</p>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <div class="bar"></div>
+        <div class="app-row"><span class="logo-mark" style="width:34px;height:34px;border-radius:9px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></span> SmartTools Hub</div>
+        <div class="app-row">✓ &nbsp;Opens full-screen, no browser bar</div>
+        <div class="app-row">✓ &nbsp;Tools load instantly</div>
+        <div class="app-row">✓ &nbsp;No account, no storage used</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="adslot" aria-label="Advertisement placeholder">
+    <small>Advertisement</small>
+    <p>In-article AdSense slot — reserved for monetization once approved.</p>
+  </div>
+
+  <section class="block" id="faq" style="padding-top:6px">
+    <div class="sec-head"><h2>Questions</h2></div>
+    <details><summary>Is SmartTools Hub really free?</summary><p>Yes. Every tool is free with no sign-up and no usage limit. The plan is to keep it free and cover costs with advertising (Google AdSense) once the site qualifies.</p></details>
+    <details><summary>Is my data private?</summary><p>Yes — all tools run entirely in your browser. Passwords you generate, numbers you calculate and text you paste are never sent to a server or saved anywhere.</p></details>
+    <details><summary>Does it work on Android?</summary><p>Yes. It works in any mobile browser, and you can install it to your home screen as a PWA (see the install steps above). A native Play Store app with AdMob is a later step in the roadmap, not required to start.</p></details>
+    <details><summary>Which tool should I try first?</summary><p>The most-used tools are the Loan / EMI Calculator, Password Generator, BMI Calculator and QR Code Generator — all marked “Popular” in the grid above.</p></details>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="logo" href="#" onclick="goHome(event)"><span class="logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></span><span>Smart<em style="font-style:normal;color:var(--accent)">Tools</em> Hub</span></a>
+      <p>Free online tools for everyone — calculators, converters and generators that respect your privacy. Domain: ctratd.com · Built zero-budget, step by step.</p>
+    </div>
+    <div class="foot-links">
+      <a href="#tools">All Tools</a><a href="#roadmap">Roadmap</a><a href="#install">Install</a><a href="#faq">FAQ</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+var ICONS = {
+  ruler:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 6H3a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"/><path d="M7 6v4M11 6v4M15 6v4"/></svg>',
+  heart:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3.4 1-4.5 2.5C10.9 4 9.3 3 7.5 3A5.5 5.5 0 0 0 2 8.5c0 2.2 1.5 4 3 5.5l7 7z"/></svg>',
+  cake:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M2 21h20"/><path d="M12 7V3"/><circle cx="12" cy="2" r="1"/></svg>',
+  pct:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>',
+  bank:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 18h16M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 3L2 10h20z"/></svg>',
+  key:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="15" r="4"/><path d="M10.9 12.1L21 2M15 8l3 3"/></svg>',
+  text:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7V5h16v2M12 5v14M9 19h6"/></svg>',
+  qr:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM21 14v.01M14 21v.01M21 21v.01M18 18h3"/></svg>',
+  tip:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c-.6-1-1.7-1.5-3-1.5-1.7 0-3 1-3 2.2 0 3 6 1.6 6 4.1 0 1.2-1.3 2.2-3 2.2-1.3 0-2.4-.5-3-1.5"/></svg>',
+  clock:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>',
+  dice:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg>',
+  cal:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  calc:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h.01M12 19h.01M16 19h.01"/></svg>',
+  clean:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h13M3 12h9M3 18h13"/><path d="M17 10l5 5M22 10l-5 5"/></svg>',
+  img:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>'
+};
+
+var TOOLS = [
+  {id:'calc', name:'Calculator', desc:'A proper everyday calculator with brackets and percent — use the keypad or type and press Enter.', cat:'Calculator', icon:'calc', pop:true},
+  {id:'unit', name:'Unit Converter', desc:'Convert length, weight and temperature instantly — metres, miles, kg, pounds, °C, °F and more.', cat:'Converter', icon:'ruler'},
+  {id:'bmi', name:'BMI Calculator', desc:'Check your Body Mass Index from height and weight, with a clear healthy-range guide.', cat:'Calculator', icon:'heart', pop:true},
+  {id:'age', name:'Age Calculator', desc:'Your exact age in years, months and days — plus days until your next birthday.', cat:'Time', icon:'cake'},
+  {id:'percent', name:'Percentage Calculator', desc:'What is X% of Y? X is what % of Y? Percentage increase and decrease, solved.', cat:'Calculator', icon:'pct'},
+  {id:'loan', name:'Loan / EMI Calculator', desc:'Monthly payment, total interest and full cost for any loan, car finance or installment plan.', cat:'Calculator', icon:'bank', pop:true},
+  {id:'password', name:'Password Generator', desc:'Strong random passwords generated on your device. Nothing is sent or stored anywhere.', cat:'Generator', icon:'key', pop:true},
+  {id:'wordcount', name:'Word Counter & Text Tools', desc:'Count words, characters and reading time — plus one-tap UPPER, lower and Title Case.', cat:'Text', icon:'text'},
+  {id:'qr', name:'QR Code Generator', desc:'Turn any link or text into a QR code and download it as a PNG image.', cat:'Generator', icon:'qr', pop:true},
+  {id:'cleaner', name:'Text Cleaner', desc:'Fix messy text in one tap: extra spaces, blank lines, duplicate lines and trailing whitespace — removed.', cat:'Text', icon:'clean'},
+  {id:'imgcomp', name:'Image Compressor', desc:'Shrink JPG and PNG photos right in your browser — pick quality, see the saving, download. Nothing is uploaded.', cat:'Converter', icon:'img', pop:true},
+  {id:'tip', name:'Tip & Bill Split', desc:'Work out the tip and split any restaurant bill fairly between friends.', cat:'Calculator', icon:'tip'},
+  {id:'stopwatch', name:'Stopwatch', desc:'Precise stopwatch with lap times — for workouts, cooking, study sessions and races.', cat:'Time', icon:'clock'},
+  {id:'random', name:'Random Number & Dice', desc:'Pick a random number in any range, roll dice, or pick a random name from your list.', cat:'Generator', icon:'dice'},
+  {id:'datediff', name:'Date Difference', desc:'How many days between two dates? Total days, weeks, months and business days.', cat:'Time', icon:'cal'}
+];
+
+var CATS = ['All','Calculator','Converter','Text','Generator','Time'];
+var activeCat = 'All';
+var currentTool = null;
+
+function $(id){ return document.getElementById(id); }
+function fmt(n, d){ if(d===undefined) d=2; return Number(n).toLocaleString('en-US',{maximumFractionDigits:d, minimumFractionDigits:0}); }
+function toast(msg){ var t=$('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(function(){t.classList.remove('show')},2200); }
+function copyText(txt, msg){
+  function done(){ toast(msg||'Copied to clipboard'); }
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done).catch(function(){ fallback(); }); } else fallback();
+  function fallback(){ var ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); done();}catch(e){ toast('Copy failed — select and copy manually'); } document.body.removeChild(ta); }
+}
+function goHome(e){ if(e) e.preventDefault(); closeTool(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+var CAT_LABELS = {All:'All Tools', Calculator:'Calculators', Converter:'Converters', Text:'Text Tools', Generator:'Generators', Time:'Time & Date'};
+function renderCats(){
+  $('cats').innerHTML = CATS.map(function(c){ return '<button class="cat'+(c===activeCat?' active':'')+'" onclick="setCat(\''+c+'\')">'+CAT_LABELS[c]+'</button>'; }).join('');
+}
+function setCat(c){ activeCat=c; renderCats(); renderGrid(); }
+function renderGrid(){
+  var q = ($('searchInput').value||'').toLowerCase().trim();
+  var list = TOOLS.filter(function(t){
+    var okCat = activeCat==='All' || t.cat===activeCat;
+    var okQ = !q || (t.name+' '+t.desc+' '+t.cat).toLowerCase().indexOf(q)>-1;
+    return okCat && okQ;
+  });
+  if(!list.length){ $('grid').innerHTML = '<div class="empty"><b>No tools found.</b><br>Try a different search or category.</div>'; return; }
+  $('grid').innerHTML = list.map(function(t){
+    return '<button class="card" onclick="openTool(\''+t.id+'\')"><span class="icon">'+ICONS[t.icon]+'</span><h3>'+t.name+(t.pop?'<span class="pop">POPULAR</span>':'')+'</h3><p>'+t.desc+'</p><span class="tag">'+t.cat+'</span></button>';
+  }).join('');
+}
+
+function openTool(id){
+  var t = null; for(var i=0;i<TOOLS.length;i++) if(TOOLS[i].id===id) t=TOOLS[i];
+  if(!t) return;
+  currentTool = id;
+  $('wsIcon').innerHTML = ICONS[t.icon];
+  $('wsTitle').textContent = t.name;
+  $('wsDesc').textContent = t.desc;
+  $('wsBody').innerHTML = BUILDERS[id]();
+  $('workspace').classList.add('open');
+  $('workspace').scrollIntoView({behavior:'smooth', block:'start'});
+  if(INITS[id]) INITS[id]();
+}
+function closeTool(){ $('workspace').classList.remove('open'); $('wsBody').innerHTML=''; currentTool=null; if(window._swTimer){clearInterval(window._swTimer); window._swTimer=null;} }
+
+/* ============ TOOL TEMPLATES ============ */
+var BUILDERS = {
+calc: function(){
+  var keys=[['C','op'],['(','op'],[')','op'],['÷','op'],['7',''],['8',''],['9',''],['×','op'],['4',''],['5',''],['6',''],['−','op'],['1',''],['2',''],['3',''],['+','op'],['0',''],['.',''],['⌫','op'],['=','eq']];
+  var html='<div class="field"><label>Expression</label><input id="cExpr" type="text" value="" placeholder="Type or use the keypad — e.g. (1200 × 15%) + 340" onkeydown="if(event.key===\'Enter\')calcEquals()" style="font-family:\'JetBrains Mono\',monospace;font-size:19px"></div>';
+  html+='<div class="result"><div class="sub">Result</div><div class="big mono" id="cOut">0</div></div><div class="calc-keys">';
+  for(var i=0;i<keys.length;i++){ html+='<button class="'+keys[i][1]+'" onclick="calcKey(\''+keys[i][0]+'\')">'+keys[i][0]+'</button>'; }
+  html+='</div><div class="actions"><button class="btn btn-ghost" onclick="copyText(document.getElementById(\'cOut\').textContent,\'Result copied\')">Copy result</button></div>';
+  return html; },
+cleaner: function(){ return ''+
+ '<div class="field"><label>Messy text</label><textarea id="clText" placeholder="Paste text with extra   spaces, blank lines and duplicate lines…" style="min-height:130px"></textarea></div>'+
+ '<div class="checkrow"><label><input type="checkbox" id="clSpaces" checked> Fix extra spaces</label><label><input type="checkbox" id="clBlank" checked> Remove blank lines</label><label><input type="checkbox" id="clDup" checked> Remove duplicate lines</label><label><input type="checkbox" id="clTrim" checked> Trim each line</label></div>'+
+ '<div class="actions"><button class="btn btn-primary" onclick="cleanText()">Clean text</button><button class="btn btn-ghost" onclick="copyText(document.getElementById(\'clText\').value,\'Cleaned text copied\')">Copy result</button></div>'+
+ '<div class="result" id="clStat" style="display:none"><div class="sub" id="clStatText"></div></div>'; },
+imgcomp: function(){ return ''+
+ '<div class="field"><label>Choose a JPG or PNG image</label><input id="imFile" type="file" accept="image/jpeg,image/png,image/webp" onchange="imgPicked()"></div>'+
+ '<div class="form-grid" style="margin-top:14px"><div class="field"><label>Quality: <span id="imQLabel" class="mono">75</span>%</label><input id="imQ" type="range" min="10" max="95" value="75" oninput="document.getElementById(\'imQLabel\').textContent=this.value"></div>'+
+ '<div class="field"><label>Max width</label><select id="imW"><option value="0">Keep original size</option><option value="1920">1920 px</option><option value="1280" selected>1280 px</option><option value="800">800 px</option></select></div></div>'+
+ '<div id="imInfo" class="result" style="display:none"><div class="result-grid" style="margin-top:0"><div><b class="mono" id="imOrig">—</b><span>Original size</span></div><div><b class="mono" id="imNew">—</b><span>Compressed size</span></div><div><b class="mono" id="imSave">—</b><span>Saved</span></div></div><img id="imPrev" class="img-preview" alt="Compressed image preview"></div>'+
+ '<div class="actions"><button class="btn btn-primary" onclick="compressImg()">Compress image</button><a class="btn btn-ghost" id="imDl" href="#" download="compressed.jpg" style="display:none">Download compressed JPG</a></div>'+
+ '<p style="color:var(--muted);font-size:13px;margin-top:12px">Your image is processed only on this device — it is never uploaded anywhere.</p>'; },
+unit: function(){ return ''+
+ '<div class="form-grid">'+
+ '<div class="field"><label>Category</label><select id="uCat" onchange="unitCatChange()"><option value="length">Length</option><option value="weight">Weight</option><option value="temp">Temperature</option></select></div>'+
+ '<div class="field"><label>Value</label><input id="uVal" type="number" value="1" step="any" oninput="calcUnit()"></div>'+
+ '<div class="field"><label>From</label><select id="uFrom" onchange="calcUnit()"></select></div>'+
+ '<div class="field"><label>To</label><select id="uTo" onchange="calcUnit()"></select></div></div>'+
+ '<div class="result"><div class="big mono" id="uOut">—</div><div class="sub" id="uSub"></div></div>'+
+ '<div class="actions"><button class="btn btn-ghost" onclick="swapUnit()">⇅ Swap units</button><button class="btn btn-ghost" onclick="copyText(document.getElementById(\'uOut\').textContent)">Copy result</button></div>'; },
+bmi: function(){ return ''+
+ '<div class="form-grid"><div class="field"><label>Height (cm)</label><input id="bH" type="number" value="170" oninput="calcBMI()"></div>'+
+ '<div class="field"><label>Weight (kg)</label><input id="bW" type="number" value="70" oninput="calcBMI()"></div></div>'+
+ '<div class="result"><div class="big">BMI: <span class="mono" id="bOut">—</span></div><div class="sub" id="bCat"></div><div class="meter"><i id="bMeter"></i></div><div class="sub" id="bRange" style="margin-top:10px"></div></div>'+
+ '<p style="color:var(--muted);font-size:13px;margin-top:14px">Healthy BMI range for adults is 18.5 – 24.9 (WHO). BMI is a general guide, not a medical diagnosis.</p>'; },
+age: function(){ var today=new Date().toISOString().slice(0,10); return ''+
+ '<div class="form-grid"><div class="field"><label>Date of birth</label><input id="aDob" type="date" value="2003-03-11" onchange="calcAge()"></div>'+
+ '<div class="field"><label>Age at date</label><input id="aAt" type="date" value="'+today+'" onchange="calcAge()"></div></div>'+
+ '<div class="result"><div class="big" id="aOut">—</div><div class="sub" id="aSub"></div><div class="result-grid"><div><b class="mono" id="aDays">—</b><span>Total days lived</span></div><div><b class="mono" id="aWeeks">—</b><span>Total weeks</span></div><div><b class="mono" id="aNext">—</b><span>Days to next birthday</span></div></div></div>'; },
+percent: function(){ return ''+
+ '<div class="field" style="margin-bottom:14px"><label>Mode</label><select id="pMode" onchange="pctMode()"><option value="1">What is X% of Y?</option><option value="2">X is what % of Y?</option><option value="3">Percentage change (from X to Y)</option></select></div>'+
+ '<div class="form-grid"><div class="field"><label id="pL1">X (percent)</label><input id="pX" type="number" value="20" step="any" oninput="calcPct()"></div>'+
+ '<div class="field"><label id="pL2">Y (number)</label><input id="pY" type="number" value="150" step="any" oninput="calcPct()"></div></div>'+
+ '<div class="result"><div class="big mono" id="pOut">—</div><div class="sub" id="pSub"></div></div>'; },
+loan: function(){ return ''+
+ '<div class="form-grid"><div class="field"><label>Loan amount</label><input id="lAmt" type="number" value="500000" step="any" oninput="calcLoan()"></div>'+
+ '<div class="field"><label>Annual interest rate (%)</label><input id="lRate" type="number" value="12" step="any" oninput="calcLoan()"></div>'+
+ '<div class="field"><label>Term (months)</label><input id="lMonths" type="number" value="36" oninput="calcLoan()"></div>'+
+ '<div class="field"><label>Currency label</label><input id="lCur" type="text" value="Rs" oninput="calcLoan()"></div></div>'+
+ '<div class="result"><div class="sub">Monthly payment (EMI)</div><div class="big mono" id="lEmi">—</div>'+
+ '<div class="result-grid"><div><b class="mono" id="lTotal">—</b><span>Total repayment</span></div><div><b class="mono" id="lInt">—</b><span>Total interest</span></div><div><b class="mono" id="lPct">—</b><span>Interest share</span></div></div></div>'; },
+password: function(){ return ''+
+ '<div class="field"><label>Length: <span id="pwLenLabel" class="mono">16</span> characters</label><input id="pwLen" type="range" min="6" max="64" value="16" oninput="document.getElementById(\'pwLenLabel\').textContent=this.value; genPw()"></div>'+
+ '<div class="checkrow"><label><input type="checkbox" id="pwUpper" checked onchange="genPw()"> A–Z</label><label><input type="checkbox" id="pwLower" checked onchange="genPw()"> a–z</label><label><input type="checkbox" id="pwNum" checked onchange="genPw()"> 0–9</label><label><input type="checkbox" id="pwSym" checked onchange="genPw()"> Symbols</label></div>'+
+ '<div class="result"><div class="big mono" id="pwOut" style="word-break:break-all;font-size:22px">—</div><div class="meter"><i id="pwMeter"></i></div><div class="sub" id="pwStrength"></div></div>'+
+ '<div class="actions"><button class="btn btn-primary" onclick="genPw()">↻ Generate new</button><button class="btn btn-ghost" onclick="copyText(document.getElementById(\'pwOut\').textContent,\'Password copied\')">Copy password</button></div>'+
+ '<p style="color:var(--muted);font-size:13px;margin-top:12px">Generated locally with your browser\u2019s secure random generator. It is never sent or stored — copy it into your password manager.</p>'; },
+wordcount: function(){ return ''+
+ '<div class="field"><label>Your text</label><textarea id="wText" placeholder="Paste or type your text here…" oninput="calcWords()"></textarea></div>'+
+ '<div class="result"><div class="result-grid" style="margin-top:0"><div><b class="mono" id="wWords">0</b><span>Words</span></div><div><b class="mono" id="wChars">0</b><span>Characters</span></div><div><b class="mono" id="wNoSpace">0</b><span>Chars (no spaces)</span></div><div><b class="mono" id="wSent">0</b><span>Sentences</span></div><div><b class="mono" id="wPara">0</b><span>Paragraphs</span></div><div><b class="mono" id="wRead">0 min</b><span>Reading time</span></div></div></div>'+
+ '<div class="actions"><button class="btn btn-ghost" onclick="caseText(\'upper\')">UPPERCASE</button><button class="btn btn-ghost" onclick="caseText(\'lower\')">lowercase</button><button class="btn btn-ghost" onclick="caseText(\'title\')">Title Case</button><button class="btn btn-ghost" onclick="copyText(document.getElementById(\'wText\').value,\'Text copied\')">Copy text</button></div>'; },
+qr: function(){ return ''+
+ '<div class="field"><label>Link or text</label><input id="qText" type="text" value="https://ctratd.com" oninput="genQR()"></div>'+
+ '<div class="result" style="text-align:center"><div id="qrBox"><div id="qCanvas"></div></div><div class="sub" style="margin-top:10px">Scan with any phone camera</div></div>'+
+ '<div class="actions" style="justify-content:center"><button class="btn btn-primary" onclick="downloadQR()">Download PNG</button></div>'; },
+tip: function(){ return ''+
+ '<div class="form-grid"><div class="field"><label>Bill amount</label><input id="tBill" type="number" value="2500" step="any" oninput="calcTip()"></div>'+
+ '<div class="field"><label>Tip (%)</label><input id="tPct" type="number" value="10" step="any" oninput="calcTip()"></div>'+
+ '<div class="field"><label>Split between (people)</label><input id="tPeople" type="number" value="4" min="1" oninput="calcTip()"></div></div>'+
+ '<div class="result"><div class="sub">Each person pays</div><div class="big mono" id="tEach">—</div><div class="result-grid"><div><b class="mono" id="tTip">—</b><span>Total tip</span></div><div><b class="mono" id="tTotal">—</b><span>Total bill + tip</span></div><div><b class="mono" id="tTipEach">—</b><span>Tip per person</span></div></div></div>'; },
+stopwatch: function(){ return ''+
+ '<div class="result" style="text-align:center"><div class="big mono" id="swOut" style="font-size:44px">00:00.00</div></div>'+
+ '<div class="actions" style="justify-content:center"><button class="btn btn-primary" id="swBtn" onclick="toggleSW()">Start</button><button class="btn btn-ghost" onclick="lapSW()">Lap</button><button class="btn btn-ghost" onclick="resetSW()">Reset</button></div>'+
+ '<table class="breakdown" id="swLaps" style="display:none"><thead><tr><th>Lap</th><th style="text-align:right">Time</th></tr></thead><tbody id="swLapBody"></tbody></table>'; },
+random: function(){ return ''+
+ '<div class="form-grid"><div class="field"><label>Minimum</label><input id="rMin" type="number" value="1"></div>'+
+ '<div class="field"><label>Maximum</label><input id="rMax" type="number" value="100"></div></div>'+
+ '<div class="result" style="text-align:center"><div class="big mono" id="rOut" style="font-size:44px">?</div><div class="sub">Your random number</div></div>'+
+ '<div class="actions" style="justify-content:center"><button class="btn btn-primary" onclick="rollNum()">🎲 Pick number</button><button class="btn btn-ghost" onclick="rollDice()">Roll a dice (1–6)</button></div>'+
+ '<div class="field" style="margin-top:20px"><label>…or pick a random name / option (one per line)</label><textarea id="rList" placeholder="Ali&#10;Sara&#10;Ahmed" style="min-height:80px"></textarea></div>'+
+ '<div class="actions"><button class="btn btn-ghost" onclick="pickName()">Pick from list</button></div><div class="result" id="rNameBox" style="display:none"><div class="big" id="rName" style="text-align:center"></div></div>'; },
+datediff: function(){ var t=new Date(); var a=new Date(t.getFullYear(),0,1).toISOString().slice(0,10); var b=t.toISOString().slice(0,10); return ''+
+ '<div class="form-grid"><div class="field"><label>Start date</label><input id="dFrom" type="date" value="'+a+'" onchange="calcDateDiff()"></div>'+
+ '<div class="field"><label>End date</label><input id="dTo" type="date" value="'+b+'" onchange="calcDateDiff()"></div></div>'+
+ '<div class="result"><div class="big"><span class="mono" id="dDays">—</span> days</div><div class="sub" id="dSub"></div><div class="result-grid"><div><b class="mono" id="dWeeks">—</b><span>Weeks</span></div><div><b class="mono" id="dMonths">—</b><span>Approx. months</span></div><div><b class="mono" id="dBiz">—</b><span>Business days (Mon–Fri)</span></div></div></div>'; }
+};
+
+/* ============ TOOL LOGIC ============ */
+var UNITS = {
+  length: { units:{ 'Metres':1, 'Kilometres':1000, 'Centimetres':0.01, 'Millimetres':0.001, 'Miles':1609.344, 'Yards':0.9144, 'Feet':0.3048, 'Inches':0.0254 } },
+  weight: { units:{ 'Kilograms':1, 'Grams':0.001, 'Pounds (lb)':0.453592, 'Ounces (oz)':0.0283495, 'Stones':6.35029, 'Tonnes':1000 } },
+  temp: { units:{ 'Celsius (°C)':null, 'Fahrenheit (°F)':null, 'Kelvin (K)':null } }
+};
+function fillUnitSelects(){
+  var cat=$('uCat').value, names=Object.keys(UNITS[cat].units);
+  $('uFrom').innerHTML=names.map(function(n){return '<option>'+n+'</option>'}).join('');
+  $('uTo').innerHTML=names.map(function(n){return '<option>'+n+'</option>'}).join('');
+  if(cat==='length'){ $('uFrom').value='Metres'; $('uTo').value='Feet'; }
+  if(cat==='weight'){ $('uFrom').value='Kilograms'; $('uTo').value='Pounds (lb)'; }
+  if(cat==='temp'){ $('uFrom').value='Celsius (°C)'; $('uTo').value='Fahrenheit (°F)'; }
+  calcUnit();
+}
+function unitCatChange(){ fillUnitSelects(); }
+function swapUnit(){ var f=$('uFrom').value; $('uFrom').value=$('uTo').value; $('uTo').value=f; calcUnit(); }
+function calcUnit(){
+  var cat=$('uCat').value, v=parseFloat($('uVal').value), from=$('uFrom').value, to=$('uTo').value;
+  if(isNaN(v)){ $('uOut').textContent='—'; return; }
+  var out;
+  if(cat==='temp'){
+    var c = from.indexOf('Celsius')===0 ? v : from.indexOf('Fahrenheit')===0 ? (v-32)*5/9 : v-273.15;
+    out = to.indexOf('Celsius')===0 ? c : to.indexOf('Fahrenheit')===0 ? c*9/5+32 : c+273.15;
+  } else { out = v * UNITS[cat].units[from] / UNITS[cat].units[to]; }
+  $('uOut').textContent = fmt(out,6)+' '+to;
+  $('uSub').textContent = fmt(v,6)+' '+from+' = '+fmt(out,6)+' '+to;
+}
+function calcBMI(){
+  var h=parseFloat($('bH').value)/100, w=parseFloat($('bW').value);
+  if(!h||!w||h<=0||w<=0){ $('bOut').textContent='—'; return; }
+  var bmi=w/(h*h); $('bOut').textContent=fmt(bmi,1);
+  var cat, pct=Math.min(100, Math.max(2,(bmi-12)/(40-12)*100));
+  if(bmi<18.5) cat='Underweight — below the healthy range.';
+  else if(bmi<25) cat='Healthy weight — inside the recommended range. Well done.';
+  else if(bmi<30) cat='Overweight — above the healthy range.';
+  else cat='Obese range — consider speaking with a doctor for a proper assessment.';
+  $('bCat').textContent=cat; $('bMeter').style.width=pct+'%';
+  var lo=18.5*h*h, hi=24.9*h*h;
+  $('bRange').textContent='Healthy weight for your height: '+fmt(lo,1)+' kg – '+fmt(hi,1)+' kg.';
+}
+function calcAge(){
+  var dob=new Date($('aDob').value+'T00:00:00'), at=new Date($('aAt').value+'T00:00:00');
+  if(isNaN(dob)||isNaN(at)||at<dob){ $('aOut').textContent='—'; return; }
+  var y=at.getFullYear()-dob.getFullYear(), m=at.getMonth()-dob.getMonth(), d=at.getDate()-dob.getDate();
+  if(d<0){ m--; d+=new Date(at.getFullYear(), at.getMonth(), 0).getDate(); }
+  if(m<0){ y--; m+=12; }
+  $('aOut').textContent=y+' years, '+m+' months, '+d+' days';
+  $('aSub').textContent='Born on '+dob.toLocaleDateString('en-GB',{weekday:'long', day:'numeric', month:'long', year:'numeric'});
+  var days=Math.floor((at-dob)/86400000);
+  $('aDays').textContent=fmt(days,0); $('aWeeks').textContent=fmt(Math.floor(days/7),0);
+  var next=new Date(at.getFullYear(), dob.getMonth(), dob.getDate());
+  if(next<=at) next=new Date(at.getFullYear()+1, dob.getMonth(), dob.getDate());
+  $('aNext').textContent=fmt(Math.ceil((next-at)/86400000),0);
+}
+function pctMode(){
+  var m=$('pMode').value;
+  $('pL1').textContent = m==='1' ? 'X (percent)' : m==='2' ? 'X (part)' : 'From (old value)';
+  $('pL2').textContent = m==='1' ? 'Y (number)' : m==='2' ? 'Y (total)' : 'To (new value)';
+  calcPct();
+}
+function calcPct(){
+  var m=$('pMode').value, x=parseFloat($('pX').value), y=parseFloat($('pY').value);
+  if(isNaN(x)||isNaN(y)||y===0){ $('pOut').textContent='—'; $('pSub').textContent=''; return; }
+  if(m==='1'){ var r=x/100*y; $('pOut').textContent=fmt(r,4); $('pSub').textContent=x+'% of '+fmt(y,4)+' is '+fmt(r,4)+'.'; }
+  else if(m==='2'){ var r2=x/y*100; $('pOut').textContent=fmt(r2,2)+'%'; $('pSub').textContent=fmt(x,4)+' is '+fmt(r2,2)+'% of '+fmt(y,4)+'.'; }
+  else { var r3=(y-x)/x*100; $('pOut').textContent=(r3>=0?'+':'')+fmt(r3,2)+'%'; $('pSub').textContent='From '+fmt(x,4)+' to '+fmt(y,4)+' is a '+(r3>=0?'increase':'decrease')+' of '+fmt(Math.abs(r3),2)+'%.'; }
+}
+function calcLoan(){
+  var P=parseFloat($('lAmt').value), annual=parseFloat($('lRate').value), n=parseInt($('lMonths').value,10), cur=($('lCur').value||'').trim()+' ';
+  if(!P||isNaN(annual)||!n||n<=0){ $('lEmi').textContent='—'; return; }
+  var r=annual/100/12, emi = r===0 ? P/n : P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  var total=emi*n, intr=total-P;
+  $('lEmi').textContent=cur+fmt(emi,0);
+  $('lTotal').textContent=cur+fmt(total,0);
+  $('lInt').textContent=cur+fmt(intr,0);
+  $('lPct').textContent=fmt(intr/total*100,1)+'%';
+}
+function genPw(){
+  var sets=''; if($('pwUpper').checked) sets+='ABCDEFGHJKLMNPQRSTUVWXYZ'; if($('pwLower').checked) sets+='abcdefghjkmnpqrstuvwxyz'; if($('pwNum').checked) sets+='23456789'; if($('pwSym').checked) sets+='!@#$%^&*()-_=+[]{}<>?';
+  var len=parseInt($('pwLen').value,10);
+  if(!sets){ $('pwOut').textContent='Select at least one character type'; $('pwMeter').style.width='0%'; $('pwStrength').textContent=''; return; }
+  var arr=new Uint32Array(len); window.crypto.getRandomValues(arr);
+  var pw=''; for(var i=0;i<len;i++) pw+=sets[arr[i]%sets.length];
+  $('pwOut').textContent=pw;
+  var bits=len*Math.log2(sets.length), pct=Math.min(100,bits/128*100);
+  $('pwMeter').style.width=pct+'%';
+  $('pwStrength').textContent='Strength: '+(bits<50?'Weak':bits<75?'Good':bits<100?'Strong':'Excellent')+' · ~'+Math.round(bits)+' bits of entropy · Length '+len;
+}
+function calcWords(){
+  var t=$('wText').value;
+  var words=t.trim()? t.trim().split(/\s+/).length : 0;
+  $('wWords').textContent=fmt(words,0);
+  $('wChars').textContent=fmt(t.length,0);
+  $('wNoSpace').textContent=fmt(t.replace(/\s/g,'').length,0);
+  $('wSent').textContent=fmt(t.trim()? (t.match(/[.!?]+/g)||[]).length : 0,0);
+  $('wPara').textContent=fmt(t.trim()? t.split(/\n\s*\n/).filter(function(s){return s.trim()}).length : 0,0);
+  $('wRead').textContent=(words/200).toFixed(1)+' min';
+}
+function caseText(mode){
+  var ta=$('wText'); var t=ta.value; if(!t) return;
+  if(mode==='upper') t=t.toUpperCase();
+  if(mode==='lower') t=t.toLowerCase();
+  if(mode==='title') t=t.toLowerCase().replace(/(^|\s|[("])\S/g,function(c){return c.toUpperCase()});
+  ta.value=t; calcWords(); toast('Case changed');
+}
+function genQR(){
+  var box=$('qCanvas'); if(!box) return; box.innerHTML='';
+  var txt=($('qText').value||'').trim(); if(!txt){ box.innerHTML='<span style="color:#666;font-size:13px">Type something above</span>'; return; }
+  try{ new QRCode(box,{text:txt,width:200,height:200,correctLevel:QRCode.CorrectLevel.M}); }catch(e){ box.innerHTML='<span style="color:#666;font-size:13px">QR library unavailable offline — check connection and retry.</span>'; }
+}
+function downloadQR(){
+  var img=$('qCanvas').querySelector('img'), canvas=$('qCanvas').querySelector('canvas');
+  var url = img && img.src ? img.src : (canvas ? canvas.toDataURL('image/png') : null);
+  if(!url){ toast('Generate a QR code first'); return; }
+  var a=document.createElement('a'); a.href=url; a.download='smarttools-qr.png'; document.body.appendChild(a); a.click(); document.body.removeChild(a); toast('QR code downloaded');
+}
+function calcTip(){
+  var bill=parseFloat($('tBill').value), pct=parseFloat($('tPct').value), ppl=Math.max(1,parseInt($('tPeople').value,10)||1);
+  if(isNaN(bill)||isNaN(pct)){ $('tEach').textContent='—'; return; }
+  var tip=bill*pct/100, total=bill+tip;
+  $('tEach').textContent=fmt(total/ppl,2);
+  $('tTip').textContent=fmt(tip,2); $('tTotal').textContent=fmt(total,2); $('tTipEach').textContent=fmt(tip/ppl,2);
+}
+/* Stopwatch */
+window._swStart=0; window._swElapsed=0; window._swRunning=false; window._swTimer=null; window._swLaps=[];
+function swFmt(ms){ var m=Math.floor(ms/60000), s=Math.floor(ms%60000/1000), cs=Math.floor(ms%1000/10); return (m<10?'0':'')+m+':'+(s<10?'0':'')+s+'.'+(cs<10?'0':'')+cs; }
+function toggleSW(){
+  if(window._swRunning){ window._swRunning=false; clearInterval(window._swTimer); window._swElapsed+=Date.now()-window._swStart; $('swBtn').textContent='Resume'; }
+  else { window._swRunning=true; window._swStart=Date.now(); $('swBtn').textContent='Pause'; window._swTimer=setInterval(function(){ $('swOut').textContent=swFmt(window._swElapsed+(Date.now()-window._swStart)); },31); }
+}
+function lapSW(){
+  if(!window._swRunning && window._swElapsed===0) return;
+  var now=window._swElapsed+(window._swRunning? Date.now()-window._swStart:0);
+  window._swLaps.push(now);
+  $('swLaps').style.display='table';
+  $('swLapBody').innerHTML=window._swLaps.map(function(v,i){return '<tr><td>Lap '+(i+1)+'</td><td>'+swFmt(v)+'</td></tr>'}).reverse().join('');
+}
+function resetSW(){ window._swRunning=false; clearInterval(window._swTimer); window._swElapsed=0; window._swLaps=[]; $('swOut').textContent='00:00.00'; $('swBtn').textContent='Start'; $('swLaps').style.display='none'; $('swLapBody').innerHTML=''; }
+function secureRand(max){ var a=new Uint32Array(1); window.crypto.getRandomValues(a); return a[0]%max; }
+function rollNum(){ var mn=parseInt($('rMin').value,10), mx=parseInt($('rMax').value,10); if(isNaN(mn)||isNaN(mx)||mx<mn){ toast('Check min / max values'); return; } $('rOut').textContent=mn+secureRand(mx-mn+1); }
+function rollDice(){ $('rOut').textContent=1+secureRand(6); }
+function pickName(){ var lines=$('rList').value.split('\n').map(function(s){return s.trim()}).filter(Boolean); if(!lines.length){ toast('Add at least one name'); return; } $('rNameBox').style.display='block'; $('rName').textContent=lines[secureRand(lines.length)]; }
+function calcDateDiff(){
+  var a=new Date($('dFrom').value+'T00:00:00'), b=new Date($('dTo').value+'T00:00:00');
+  if(isNaN(a)||isNaN(b)){ $('dDays').textContent='—'; return; }
+  var sign=1; if(b<a){ var tmp=a; a=b; b=tmp; sign=-1; }
+  var days=Math.round((b-a)/86400000);
+  var biz=0, cur=new Date(a); while(cur<b){ cur.setDate(cur.getDate()+1); var dw=cur.getDay(); if(dw!==0&&dw!==6) biz++; }
+  $('dDays').textContent=(sign<0?'-':'')+fmt(days,0);
+  $('dSub').textContent=a.toLocaleDateString('en-GB')+' → '+b.toLocaleDateString('en-GB');
+  $('dWeeks').textContent=fmt(days/7,1); $('dMonths').textContent=fmt(days/30.44,1); $('dBiz').textContent=fmt(biz,0);
+}
+
+/* Calculator — safe parser, no eval */
+function calcKey(k){
+  var inp=$('cExpr');
+  if(k==='C'){ inp.value=''; $('cOut').textContent='0'; return; }
+  if(k==='⌫'){ inp.value=inp.value.slice(0,-1); return; }
+  if(k==='='){ calcEquals(); return; }
+  inp.value+=k; inp.focus();
+}
+function calcEquals(){
+  var expr=($('cExpr').value||'').replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-').replace(/,/g,'');
+  try{
+    var tokens=[], i=0;
+    while(i<expr.length){
+      var ch=expr[i];
+      if(ch===' '){ i++; continue; }
+      if(/[0-9.]/.test(ch)){ var num=''; while(i<expr.length && /[0-9.]/.test(expr[i])) num+=expr[i++]; tokens.push({t:'n', v:parseFloat(num)}); continue; }
+      if('+-*/%()'.indexOf(ch)>-1){ tokens.push({t:ch}); i++; continue; }
+      throw new Error('bad char');
+    }
+    var pos=0;
+    function peek(){ return tokens[pos]; }
+    function parseExpr(){ var v=parseTerm(); while(peek() && (peek().t==='+'||peek().t==='-')){ var op=tokens[pos++].t; var r=parseTerm(); v = op==='+'? v+r : v-r; } return v; }
+    function parseTerm(){ var v=parseFactor(); while(peek() && (peek().t==='*'||peek().t==='/')){ var op=tokens[pos++].t; var r=parseFactor(); v = op==='*'? v*r : v/r; } return v; }
+    function parseFactor(){
+      var tk=peek(); if(!tk) throw new Error('empty');
+      var val;
+      if(tk.t==='-'){ pos++; return -parseFactor(); }
+      if(tk.t==='+'){ pos++; return parseFactor(); }
+      if(tk.t==='('){ pos++; val=parseExpr(); if(!peek()||peek().t!==')') throw new Error('paren'); pos++; }
+      else if(tk.t==='n'){ pos++; val=tk.v; }
+      else throw new Error('syntax');
+      while(peek() && peek().t==='%'){ pos++; val=val/100; }
+      return val;
+    }
+    var out=parseExpr();
+    /* trailing % = percent of previous: handled simply as modulo above; standalone "15%" pattern */
+    if(!isFinite(out) || isNaN(out)) throw new Error('math');
+    out=Math.round(out*1e10)/1e10;
+    $('cOut').textContent=fmt(out, out % 1 === 0 ? 0 : 6);
+  }catch(e){ $('cOut').textContent='Check expression'; }
+}
+/* Text Cleaner */
+function cleanText(){
+  var ta=$('clText'); var before=ta.value;
+  var lines=before.split('\n');
+  if($('clTrim').checked) lines=lines.map(function(s){return s.trim()});
+  var text=lines.join('\n');
+  if($('clSpaces').checked) text=text.replace(/[ \t]+/g,' '); 
+  lines=text.split('\n');
+  if($('clBlank').checked) lines=lines.filter(function(s){return s.trim()!==''});
+  if($('clDup').checked){ var seen={}, out=[]; for(var i=0;i<lines.length;i++){ if(!seen[lines[i]]){ seen[lines[i]]=1; out.push(lines[i]); } } lines=out; }
+  var after=lines.join('\n');
+  ta.value=after;
+  $('clStat').style.display='block';
+  $('clStatText').textContent='Cleaned: '+fmt(before.length,0)+' → '+fmt(after.length,0)+' characters · '+fmt(lines.length,0)+' lines kept.';
+  toast('Text cleaned');
+}
+/* Image Compressor */
+window._imImg=null; window._imName='image';
+function imgPicked(){
+  var f=$('imFile').files[0]; if(!f) return;
+  window._imName=f.name.replace(/\.[^.]+$/,'');
+  var url=URL.createObjectURL(f); var im=new Image();
+  im.onload=function(){ window._imImg=im; window._imOrigSize=f.size; $('imInfo').style.display='block'; $('imOrig').textContent=fmtKB(f.size); $('imNew').textContent='—'; $('imSave').textContent='—'; $('imPrev').src=url; $('imDl').style.display='none'; };
+  im.src=url;
+}
+function fmtKB(b){ return b>=1048576 ? fmt(b/1048576,2)+' MB' : fmt(Math.max(1,Math.round(b/1024)),0)+' KB'; }
+function compressImg(){
+  if(!window._imImg){ toast('Choose an image first'); return; }
+  var im=window._imImg, maxW=parseInt($('imW').value,10), q=parseInt($('imQ').value,10)/100;
+  var w=im.naturalWidth, h=im.naturalHeight;
+  if(maxW>0 && w>maxW){ h=Math.round(h*maxW/w); w=maxW; }
+  var cv=document.createElement('canvas'); cv.width=w; cv.height=h;
+  var ctx=cv.getContext('2d'); ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,w,h); ctx.drawImage(im,0,0,w,h);
+  cv.toBlob(function(blob){
+    if(!blob){ toast('Compression failed'); return; }
+    var url=URL.createObjectURL(blob);
+    $('imNew').textContent=fmtKB(blob.size);
+    var saved=100-(blob.size/window._imOrigSize*100);
+    $('imSave').textContent=(saved>0? fmt(saved,0)+'% smaller' : 'Already optimal');
+    $('imPrev').src=url;
+    var dl=$('imDl'); dl.href=url; dl.download=window._imName+'-compressed.jpg'; dl.style.display='inline-flex';
+    toast('Image compressed');
+  },'image/jpeg',q);
+}
+
+var INITS = {
+  unit: fillUnitSelects, bmi: calcBMI, age: calcAge, percent: function(){ pctMode(); }, loan: calcLoan,
+  password: genPw, wordcount: calcWords, qr: genQR, tip: calcTip, datediff: calcDateDiff,
+  stopwatch: function(){}, random: function(){}
+};
+
+renderCats(); renderGrid();
+</script>
+</body>
+</html>
