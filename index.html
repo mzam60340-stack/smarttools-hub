@@ -5,8 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light dark" />
 <meta name="description" content="SmartTools Hub — free online calculators, converters and generators. No sign-up. Works on desktop, mobile and Android." />
-<meta name="theme-color" content="#0a7a5e" />
-<link rel="icon" href="data:," />
+<meta name="theme-color" content="#0a7a5e" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0c1210" media="(prefers-color-scheme: dark)" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="SmartTools Hub" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB8ElEQVR4nO2XX0hTYRjGf+dsOud0iGEq0sUQaZDpvBDEIhB3kTdGiCBBdhUK3kQXKYJGBLsIYheKiGDgLlKoqCs1/1GCgpAM1ItYCzQIEfJPphvueKYXscjT9Ihn2zHYc/PBy/t9z+8c3o+PRyCK0tsbD6LVtSrg8gjK2pFCvIxPAhETba70EhNtroQQ1RrjLUGPr/9buv+BJIDuAEa1huz0DDqdddy8XEpeZhZSWGYjsMPEl0Va3r5gtaMXa5r52P3e78tc73l8doC+uvvU2B08GX9D98woFyyZVBVe4YbNDkD+0+Y/vR+aOym/VMjrxTnuDfWoHa0OYBQNOIuuAjD3zU9AChHYWsczP41nfvpUBpoA9sMyQSlEisHMq7sPGP7sZXbZx6R/ia/razEBUB3CtpFBJFnGkmqivqQCd20jCw+f0V/fhCj887jFHmDg00dK3Y9oG37JmG+BoBQCoMFRSXVRcfwBAFY2f9A1857bA89xuFuRw2EArKbjpz9mAFNNHdwpu4YtOweT0Yj9YgGiIPBrL8jsik8zgOo1XNv5SWvVLXIzrJhTUtkM7jLpX8I19Y7V7S3NAMnXMAnw/wN45SH9ACLmWiA0AZQZGo6sZ5EA+uQC+J2QzscQRguN8VbEU1QWEmkOinQcUSLj+SEnn6J2Eax9YgAAAABJRU5ErkJggg==" />
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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" />
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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" />
 <title>SmartTools Hub — Free Online Tools</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -164,6 +172,20 @@ table.breakdown td:last-child{text-align:right;font-family:"JetBrains Mono",mono
 .calc-keys button.eq{background:var(--accent);color:var(--accent-ink);border-color:transparent}
 .calc-keys button:active{filter:brightness(.94)}
 .img-preview{max-width:100%;border-radius:12px;border:1px solid var(--line);margin-top:12px}
+/* RANDOM PICKER */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--accent-soft);color:var(--ink);border:1px solid var(--line);padding:7px 8px 7px 12px;border-radius:999px;font-weight:700;font-size:14px}
+.chip button{border:0;background:var(--surface);color:var(--muted);width:22px;height:22px;border-radius:50%;cursor:pointer;font-weight:800;line-height:1;display:grid;place-items:center}
+.chip button:hover{color:var(--red)}
+.picker-empty{border:1.5px dashed var(--line);border-radius:14px;padding:18px;text-align:center;color:var(--muted);font-size:14px;margin-top:10px;background:var(--bg)}
+.field-msg{font-size:13.5px;margin-top:8px;min-height:20px;font-weight:600}
+.field-msg.err{color:var(--red)}
+.field-msg.ok{color:var(--accent)}
+.addrow{display:flex;gap:10px}
+.addrow input{flex:1;min-width:0}
+@media(max-width:540px){.addrow{flex-direction:column}.addrow .btn{justify-content:center}}
+.offline-bar{display:none;background:var(--amber-soft);color:var(--ink);border-bottom:1px solid var(--line);padding:10px 20px;text-align:center;font-size:13.5px;font-weight:600}
+.offline-bar.show{display:block}
 </style>
 </head>
 <body>
@@ -186,7 +208,7 @@ table.breakdown td:last-child{text-align:right;font-family:"JetBrains Mono",mono
 <div class="hero">
   <div class="wrap hero-inner">
     <h1>Everyday tools, <mark>free forever.</mark><br>No sign-up. No clutter.</h1>
-    <p>Calculators, converters and generators that run right in your browser — on desktop, mobile and Android. Fast, private, and built to grow into a real platform.</p>
+    <p>Calculators, converters and generators that run right in your browser — on desktop, mobile and Android. Your tool inputs stay on your device; the page itself loads fonts and one QR library from external CDNs (see Privacy below).</p>
     <div class="searchbar" role="search">
       <input id="searchInput" type="search" placeholder="Search tools — try “BMI”, “password”, “loan”…" aria-label="Search tools" oninput="renderGrid()">
       <button class="btn btn-primary" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Browse tools</button>
@@ -194,8 +216,8 @@ table.breakdown td:last-child{text-align:right;font-family:"JetBrains Mono",mono
     <div class="stats">
       <div class="stat"><b>15</b><span>Working tools</span></div>
       <div class="stat"><b>100% free</b><span>No paywall</span></div>
-      <div class="stat"><b>0</b><span>Data sent to servers</span></div>
-      <div class="stat"><b>PWA</b><span>Installable on Android</span></div>
+      <div class="stat"><b>On-device</b><span>Tool inputs not uploaded</span></div>
+      <div class="stat"><b>PWA</b><span>Installable — Android &amp; desktop</span></div>
     </div>
   </div>
 </div>
@@ -223,11 +245,11 @@ table.breakdown td:last-child{text-align:right;font-family:"JetBrains Mono",mono
   <section class="block" style="padding-top:10px">
     <div class="sec-head">
       <h2>Built like a product, not a demo</h2>
-      <p>Every tool works fully in your browser. Nothing you type is uploaded, stored or tracked — close the tab and it's gone.</p>
+      <p>The tools themselves run in your browser — what you type into a tool is not uploaded to a SmartTools Hub server (there isn't one) and isn't saved when you close the tab. Two honest exceptions: this page loads its fonts from Google Fonts and the QR library from cdnjs, so those providers receive a normal web request (like your IP address) when the page loads. See the Privacy note in the FAQ.</p>
     </div>
     <div class="why">
-      <article><div class="num">1</div><h3>Runs 100% in the browser</h3><p>All calculations happen on your device. That means instant results, zero server cost, and complete privacy for things like passwords and personal numbers.</p></article>
-      <article><div class="num">2</div><h3>One app, every screen</h3><p>The same SmartTools Hub works on a laptop, a phone browser, and as an installable Android app (PWA) — no separate codebase, no app-store fee to start.</p></article>
+      <article><div class="num">1</div><h3>Tool maths happens on your device</h3><p>Calculations, password generation, text tools and image compression run locally in your browser — the values you enter are not sent to us. That's why results are instant, and why passwords and personal numbers stay yours.</p></article>
+      <article><div class="num">2</div><h3>One app, every screen</h3><p>The same SmartTools Hub works on a laptop, a phone browser, and as an installable app (PWA) on Android and desktop — no separate codebase, no app-store fee to start. On the hosted site, after the first visit the installed app can open offline (the live status in the Install section below confirms the service worker on your device); the QR tool still needs its library loaded once.</p></article>
       <article><div class="num">3</div><h3>Free to use, built to earn</h3><p>Tools stay free for everyone. The business runs on advertising — AdSense on the web first, AdMob later if a native Android app launches.</p></article>
     </div>
   </section>
@@ -239,9 +261,9 @@ table.breakdown td:last-child{text-align:right;font-family:"JetBrains Mono",mono
     </div>
     <div class="roadmap">
       <div class="step done"><span class="snum">STEP 01</span><h3>Responsive web app <span class="badge">Live</span></h3><p>This site — 15 working tools, mobile-first design, search and categories.</p></div>
-      <div class="step done"><span class="snum">STEP 02</span><h3>Installable PWA <span class="badge">Ready</span></h3><p>Add to Home Screen on Android for an app-like experience — no Play Store needed.</p></div>
-      <div class="step"><span class="snum">STEP 03</span><h3>Free hosting <span class="badge next">Next</span></h3><p>Publish on free static hosting with a custom domain (ctratd.com) and HTTPS.</p></div>
-      <div class="step"><span class="snum">STEP 04</span><h3>Google AdSense</h3><p>Apply once the site has original content, clear navigation and steady traffic.</p></div>
+      <div class="step done"><span class="snum">STEP 02</span><h3>Installable PWA <span class="badge">Ready</span></h3><p>Real web app manifest, service worker and icons — install on Android or desktop for an app-like, offline-capable experience. No Play Store needed.</p></div>
+      <div class="step done"><span class="snum">STEP 03</span><h3>Free hosting <span class="badge">Live</span></h3><p>Published free on GitHub Pages with HTTPS at mzam60340-stack.github.io/smarttools-hub.</p></div>
+      <div class="step"><span class="snum">STEP 04</span><h3>Google AdSense <span class="badge next">Next</span></h3><p>Apply once the site has original content, clear navigation and steady traffic.</p></div>
       <div class="step"><span class="snum">STEP 05</span><h3>Native app + AdMob</h3><p>If the audience grows, wrap or rebuild as a Play Store app and add AdMob.</p></div>
     </div>
     <p style="color:var(--muted);font-size:13.5px;margin-top:14px">Honest note: a PWA works on Android like an app, but it is <b>not</b> automatically a Play Store APK. That step comes later, only if it's worth the publishing fee.</p>
@@ -251,21 +273,25 @@ table.breakdown td:last-child{text-align:right;font-family:"JetBrains Mono",mono
     <div class="pwa">
       <div>
         <h2>Install SmartTools Hub on your phone</h2>
-        <p>No Play Store, no download waiting. Install it straight from Chrome in under 30 seconds — it lands on your home screen like a normal app.</p>
+        <p>No Play Store, no download waiting. SmartTools Hub is a real installable web app (PWA) — manifest, service worker and offline support included. Install it straight from Chrome in under 30 seconds.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+          <button class="btn btn-primary" id="installBtn" onclick="installApp()" style="display:none">⬇ Install app</button>
+          <span id="pwaStatus" style="font-size:13.5px;opacity:.9;align-self:center">Checking install support…</span>
+        </div>
         <ol>
           <li>Open this site in <b>Chrome on Android</b>.</li>
-          <li>Tap the <b>⋮ menu</b> in the top-right corner.</li>
-          <li>Tap <b>“Add to Home screen”</b> → <b>Install</b>.</li>
-          <li>Done — open <b>SmartTools Hub</b> from your home screen anytime.</li>
+          <li>Tap <b>Install app</b> above when it appears — or use the <b>⋮ menu</b>.</li>
+          <li>Tap <b>“Install app” / “Add to Home screen”</b> → <b>Install</b>.</li>
+          <li>Done — open <b>SmartTools Hub</b> from your home screen anytime, even offline after your first visit.</li>
         </ol>
-        <p style="margin-top:16px;font-size:13.5px">On desktop Chrome/Edge, use the install icon in the address bar for the same result.</p>
+        <p style="margin-top:16px;font-size:13.5px">On desktop Chrome/Edge, use the install icon in the address bar. On iPhone Safari: Share → Add to Home Screen.</p>
       </div>
       <div class="phone" aria-hidden="true">
         <div class="bar"></div>
         <div class="app-row"><span class="logo-mark" style="width:34px;height:34px;border-radius:9px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></span> SmartTools Hub</div>
         <div class="app-row">✓ &nbsp;Opens full-screen, no browser bar</div>
-        <div class="app-row">✓ &nbsp;Tools load instantly</div>
-        <div class="app-row">✓ &nbsp;No account, no storage used</div>
+        <div class="app-row">✓ &nbsp;Works offline after first visit</div>
+        <div class="app-row">✓ &nbsp;No account needed — only a small local cache</div>
       </div>
     </div>
   </section>
@@ -278,8 +304,8 @@ table.breakdown td:last-child{text-align:right;font-family:"JetBrains Mono",mono
   <section class="block" id="faq" style="padding-top:6px">
     <div class="sec-head"><h2>Questions</h2></div>
     <details><summary>Is SmartTools Hub really free?</summary><p>Yes. Every tool is free with no sign-up and no usage limit. The plan is to keep it free and cover costs with advertising (Google AdSense) once the site qualifies.</p></details>
-    <details><summary>Is my data private?</summary><p>Yes — all tools run entirely in your browser. Passwords you generate, numbers you calculate and text you paste are never sent to a server or saved anywhere.</p></details>
-    <details><summary>Does it work on Android?</summary><p>Yes. It works in any mobile browser, and you can install it to your home screen as a PWA (see the install steps above). A native Play Store app with AdMob is a later step in the roadmap, not required to start.</p></details>
+    <details><summary>Is my data private? What leaves my device?</summary><p><b>Your tool inputs stay on your device.</b> Passwords you generate, numbers you calculate, text you paste and images you compress are processed in your browser by this page's own code — they are not uploaded to a SmartTools Hub server (there is no backend server) and are not saved after you close the tab, except the small app cache the installed PWA keeps so it can open offline.<br><br><b>What does leave your device:</b> loading this page makes normal web requests to outside providers — <b>Google Fonts</b> (fonts.googleapis.com / fonts.gstatic.com, for the typeface) and <b>cdnjs</b> (cdnjs.cloudflare.com, for the QR code library). Those providers receive the usual request data, such as your IP address and browser details, under their own privacy policies. If those requests are blocked or you're offline, the tools still work except QR generation, which needs its library loaded once.</p></details>
+    <details><summary>Does it work offline and on Android?</summary><p>Yes. It works in any mobile browser, and you can install it as a real PWA (see the install steps above) — after the first visit the installed app opens offline for the tools that don't need an external library. A native Play Store app with AdMob is a later step in the roadmap, not required to start.</p></details>
     <details><summary>Which tool should I try first?</summary><p>The most-used tools are the Loan / EMI Calculator, Password Generator, BMI Calculator and QR Code Generator — all marked “Popular” in the grid above.</p></details>
   </section>
 </main>
@@ -288,7 +314,7 @@ table.breakdown td:last-child{text-align:right;font-family:"JetBrains Mono",mono
   <div class="wrap foot">
     <div>
       <a class="logo" href="#" onclick="goHome(event)"><span class="logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></span><span>Smart<em style="font-style:normal;color:var(--accent)">Tools</em> Hub</span></a>
-      <p>Free online tools for everyone — calculators, converters and generators that respect your privacy. Domain: ctratd.com · Built zero-budget, step by step.</p>
+      <p>Free online tools for everyone — calculators, converters and generators that run on your device. Live at mzam60340-stack.github.io/smarttools-hub · Page loads Google Fonts &amp; the QR library from external CDNs — see the Privacy answer in the FAQ. Built zero-budget, step by step.</p>
     </div>
     <div class="foot-links">
       <a href="#tools">All Tools</a><a href="#roadmap">Roadmap</a><a href="#install">Install</a><a href="#faq">FAQ</a>
@@ -296,6 +322,7 @@ table.breakdown td:last-child{text-align:right;font-family:"JetBrains Mono",mono
   </div>
 </footer>
 
+<div class="offline-bar" id="offlineBar" role="status">You're offline — tools already loaded on this page still work. The QR tool needs its library loaded once while online.</div>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
@@ -324,11 +351,11 @@ var TOOLS = [
   {id:'age', name:'Age Calculator', desc:'Your exact age in years, months and days — plus days until your next birthday.', cat:'Time', icon:'cake'},
   {id:'percent', name:'Percentage Calculator', desc:'What is X% of Y? X is what % of Y? Percentage increase and decrease, solved.', cat:'Calculator', icon:'pct'},
   {id:'loan', name:'Loan / EMI Calculator', desc:'Monthly payment, total interest and full cost for any loan, car finance or installment plan.', cat:'Calculator', icon:'bank', pop:true},
-  {id:'password', name:'Password Generator', desc:'Strong random passwords generated on your device. Nothing is sent or stored anywhere.', cat:'Generator', icon:'key', pop:true},
+  {id:'password', name:'Password Generator', desc:'Strong random passwords generated on your device — the generator itself sends and stores nothing.', cat:'Generator', icon:'key', pop:true},
   {id:'wordcount', name:'Word Counter & Text Tools', desc:'Count words, characters and reading time — plus one-tap UPPER, lower and Title Case.', cat:'Text', icon:'text'},
   {id:'qr', name:'QR Code Generator', desc:'Turn any link or text into a QR code and download it as a PNG image.', cat:'Generator', icon:'qr', pop:true},
   {id:'cleaner', name:'Text Cleaner', desc:'Fix messy text in one tap: extra spaces, blank lines, duplicate lines and trailing whitespace — removed.', cat:'Text', icon:'clean'},
-  {id:'imgcomp', name:'Image Compressor', desc:'Shrink JPG and PNG photos right in your browser — pick quality, see the saving, download. Nothing is uploaded.', cat:'Converter', icon:'img', pop:true},
+  {id:'imgcomp', name:'Image Compressor', desc:'Shrink JPG and PNG photos right in your browser — pick quality, see the saving, download. The image itself is not uploaded.', cat:'Converter', icon:'img', pop:true},
   {id:'tip', name:'Tip & Bill Split', desc:'Work out the tip and split any restaurant bill fairly between friends.', cat:'Calculator', icon:'tip'},
   {id:'stopwatch', name:'Stopwatch', desc:'Precise stopwatch with lap times — for workouts, cooking, study sessions and races.', cat:'Time', icon:'clock'},
   {id:'random', name:'Random Number & Dice', desc:'Pick a random number in any range, roll dice, or pick a random name from your list.', cat:'Generator', icon:'dice'},
@@ -442,7 +469,7 @@ wordcount: function(){ return ''+
  '<div class="result"><div class="result-grid" style="margin-top:0"><div><b class="mono" id="wWords">0</b><span>Words</span></div><div><b class="mono" id="wChars">0</b><span>Characters</span></div><div><b class="mono" id="wNoSpace">0</b><span>Chars (no spaces)</span></div><div><b class="mono" id="wSent">0</b><span>Sentences</span></div><div><b class="mono" id="wPara">0</b><span>Paragraphs</span></div><div><b class="mono" id="wRead">0 min</b><span>Reading time</span></div></div></div>'+
  '<div class="actions"><button class="btn btn-ghost" onclick="caseText(\'upper\')">UPPERCASE</button><button class="btn btn-ghost" onclick="caseText(\'lower\')">lowercase</button><button class="btn btn-ghost" onclick="caseText(\'title\')">Title Case</button><button class="btn btn-ghost" onclick="copyText(document.getElementById(\'wText\').value,\'Text copied\')">Copy text</button></div>'; },
 qr: function(){ return ''+
- '<div class="field"><label>Link or text</label><input id="qText" type="text" value="https://ctratd.com" oninput="genQR()"></div>'+
+ '<div class="field"><label>Link or text</label><input id="qText" type="text" value="https://mzam60340-stack.github.io/smarttools-hub/" oninput="genQR()"></div>'+
  '<div class="result" style="text-align:center"><div id="qrBox"><div id="qCanvas"></div></div><div class="sub" style="margin-top:10px">Scan with any phone camera</div></div>'+
  '<div class="actions" style="justify-content:center"><button class="btn btn-primary" onclick="downloadQR()">Download PNG</button></div>'; },
 tip: function(){ return ''+
@@ -458,9 +485,17 @@ random: function(){ return ''+
  '<div class="form-grid"><div class="field"><label>Minimum</label><input id="rMin" type="number" value="1"></div>'+
  '<div class="field"><label>Maximum</label><input id="rMax" type="number" value="100"></div></div>'+
  '<div class="result" style="text-align:center"><div class="big mono" id="rOut" style="font-size:44px">?</div><div class="sub">Your random number</div></div>'+
- '<div class="actions" style="justify-content:center"><button class="btn btn-primary" onclick="rollNum()">🎲 Pick number</button><button class="btn btn-ghost" onclick="rollDice()">Roll a dice (1–6)</button></div>'+
- '<div class="field" style="margin-top:20px"><label>…or pick a random name / option (one per line)</label><textarea id="rList" placeholder="Ali&#10;Sara&#10;Ahmed" style="min-height:80px"></textarea></div>'+
- '<div class="actions"><button class="btn btn-ghost" onclick="pickName()">Pick from list</button></div><div class="result" id="rNameBox" style="display:none"><div class="big" id="rName" style="text-align:center"></div></div>'; },
+ '<div class="actions" style="justify-content:center"><button class="btn btn-primary" onclick="rollNum()">Pick a random number</button><button class="btn btn-ghost" onclick="rollDice()">Roll a dice (1–6)</button></div>'+
+ '<hr style="border:0;border-top:1px solid var(--line);margin:26px 0 20px">'+
+ '<div class="field"><label for="rNameInput">…or pick a random name / option</label>'+
+ '<div class="addrow"><input id="rNameInput" type="text" maxlength="60" placeholder="Type a name, then tap Add name" aria-label="Name to add" onkeydown="if(event.key===\'Enter\'){event.preventDefault();addName();}"><button class="btn btn-primary" type="button" onclick="addName()">+ Add name</button></div>'+
+ '<div class="field-msg" id="rMsg" aria-live="polite"></div>'+
+ '<p style="color:var(--muted);font-size:13px;margin:6px 0 0">Add at least 1 name to pick from (2 or more is more fun). Names are only kept on this page — nothing is saved.</p></div>'+
+ '<div id="rEmpty" class="picker-empty"><b>No names added yet.</b><br>Type a name above and tap <b>+ Add name</b> — it will appear here as a tag you can remove.<br><button class="btn btn-ghost" type="button" style="margin-top:12px" onclick="addExampleNames()">Try with example names (Demo, Test, Sample)</button></div>'+
+ '<div class="chips" id="rChips" aria-label="Added names"></div>'+
+ '<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px"><span id="rCount" style="font-size:13.5px;color:var(--muted);font-weight:700">0 names added</span><button class="btn btn-ghost" type="button" id="rClear" onclick="clearNames()" style="display:none;padding:8px 14px">Clear all</button></div>'+
+ '<div class="actions"><button class="btn btn-primary" type="button" onclick="pickName()" style="font-size:15px;padding:13px 22px">Pick a random name</button></div>'+
+ '<div class="result" id="rNameBox" style="display:none;text-align:center"><div class="sub">Picked for you</div><div class="big" id="rName"></div></div>'; },
 datediff: function(){ var t=new Date(); var a=new Date(t.getFullYear(),0,1).toISOString().slice(0,10); var b=t.toISOString().slice(0,10); return ''+
  '<div class="form-grid"><div class="field"><label>Start date</label><input id="dFrom" type="date" value="'+a+'" onchange="calcDateDiff()"></div>'+
  '<div class="field"><label>End date</label><input id="dTo" type="date" value="'+b+'" onchange="calcDateDiff()"></div></div>'+
@@ -609,7 +644,39 @@ function resetSW(){ window._swRunning=false; clearInterval(window._swTimer); win
 function secureRand(max){ var a=new Uint32Array(1); window.crypto.getRandomValues(a); return a[0]%max; }
 function rollNum(){ var mn=parseInt($('rMin').value,10), mx=parseInt($('rMax').value,10); if(isNaN(mn)||isNaN(mx)||mx<mn){ toast('Check min / max values'); return; } $('rOut').textContent=mn+secureRand(mx-mn+1); }
 function rollDice(){ $('rOut').textContent=1+secureRand(6); }
-function pickName(){ var lines=$('rList').value.split('\n').map(function(s){return s.trim()}).filter(Boolean); if(!lines.length){ toast('Add at least one name'); return; } $('rNameBox').style.display='block'; $('rName').textContent=lines[secureRand(lines.length)]; }
+/* Random Picker — name list with clear empty state + validation */
+window._rNames=[];
+function rMsg(text, ok){ var m=$('rMsg'); if(!m) return; m.textContent=text||''; m.className='field-msg '+(text?(ok?'ok':'err'):''); }
+function renderNames(){
+  var chips=$('rChips'); if(!chips) return;
+  var names=window._rNames;
+  $('rEmpty').style.display = names.length ? 'none' : 'block';
+  $('rClear').style.display = names.length ? 'inline-flex' : 'none';
+  $('rCount').textContent = names.length + (names.length===1 ? ' name added' : ' names added');
+  chips.innerHTML = names.map(function(n,i){ var safe=n.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); return '<span class="chip">'+safe+'<button type="button" aria-label="Remove '+safe+'" onclick="removeName('+i+')">×</button></span>'; }).join('');
+}
+function addName(){
+  var inp=$('rNameInput'); var v=(inp.value||'').trim().replace(/\s+/g,' ');
+  if(!v){ rMsg('Type a name first — the box above is empty.'); inp.focus(); return; }
+  if(v.length>60){ rMsg('That name is too long — keep it under 60 characters.'); inp.focus(); return; }
+  var dup=false; for(var i=0;i<window._rNames.length;i++){ if(window._rNames[i].toLowerCase()===v.toLowerCase()) dup=true; }
+  if(dup){ rMsg('“'+v+'” is already in the list — duplicates are not added twice.'); inp.select(); return; }
+  window._rNames.push(v); inp.value=''; rMsg('Added “'+v+'”. Add more, or tap Pick a random name.', true); renderNames(); inp.focus();
+}
+function addExampleNames(){
+  var ex=['Demo','Test','Sample']; var added=0;
+  for(var i=0;i<ex.length;i++){ var has=false; for(var j=0;j<window._rNames.length;j++){ if(window._rNames[j].toLowerCase()===ex[i].toLowerCase()) has=true; } if(!has){ window._rNames.push(ex[i]); added++; } }
+  rMsg(added ? 'Example names added — replace them with your real names anytime.' : 'Example names are already in the list.', true); renderNames();
+}
+function removeName(i){ var removed=window._rNames.splice(i,1)[0]; rMsg('Removed “'+removed+'”.', true); renderNames(); }
+function clearNames(){ window._rNames=[]; $('rNameBox').style.display='none'; rMsg('List cleared. Add names to start again.', true); renderNames(); }
+function pickName(){
+  var names=window._rNames;
+  if(!names.length){ rMsg('Add at least one name first — type it above and tap + Add name.'); var inp=$('rNameInput'); if(inp) inp.focus(); return; }
+  rMsg('', true);
+  $('rNameBox').style.display='block'; $('rName').textContent=names[secureRand(names.length)];
+  $('rNameBox').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
 function calcDateDiff(){
   var a=new Date($('dFrom').value+'T00:00:00'), b=new Date($('dTo').value+'T00:00:00');
   if(isNaN(a)||isNaN(b)){ $('dDays').textContent='—'; return; }
@@ -710,8 +777,58 @@ function compressImg(){
 var INITS = {
   unit: fillUnitSelects, bmi: calcBMI, age: calcAge, percent: function(){ pctMode(); }, loan: calcLoan,
   password: genPw, wordcount: calcWords, qr: genQR, tip: calcTip, datediff: calcDateDiff,
-  stopwatch: function(){}, random: function(){}
+  stopwatch: function(){}, random: function(){ window._rNames=[]; renderNames(); }
 };
+
+/* ============ PWA: service worker, install flow, offline state ============ */
+window._deferredInstall=null;
+function setPwaStatus(msg){ var el=$('pwaStatus'); if(el) el.textContent=msg; }
+if('serviceWorker' in navigator){
+  // Settle fast and honestly: if registration has not resolved in 5 seconds
+  // (blocked context, slow network), fall back to manual-install guidance.
+  var swSettled=false;
+  setTimeout(function(){ if(!swSettled) setPwaStatus('Install via your browser menu: ⋮ → Install app / Add to Home Screen.'); }, 5000);
+  window.addEventListener('load', function(){
+    // Root sw.js (deployed site, full scope) first, then the assets/ copy
+    // served by this preview (limited scope there — reported as such).
+    navigator.serviceWorker.register('sw.js')
+      .catch(function(){ return navigator.serviceWorker.register('data:application/javascript;base64,LyogU21hcnRUb29scyBIdWIg4oCUIFNlcnZpY2UgV29ya2VyCiAgIFN0cmF0ZWd5OgogICAtIEFwcCBzaGVsbCAodGhpcyBwYWdlLCBtYW5pZmVzdCwgaWNvbnMpOiBjYWNoZS1maXJzdCwgcmVmcmVzaGVkIGluIGJhY2tncm91bmQuCiAgIC0gTmF2aWdhdGlvbnM6IG5ldHdvcmstZmlyc3QsIGZhbGxpbmcgYmFjayB0byB0aGUgY2FjaGVkIHBhZ2UsIHRoZW4gdGhlIG9mZmxpbmUgcGFnZS4KICAgLSBHb29nbGUgRm9udHM6IHN0YWxlLXdoaWxlLXJldmFsaWRhdGUgKGZvbnRzIGFyZSBkZWNvcmF0aXZlOyB0b29scyB3b3JrIHdpdGhvdXQgdGhlbSkuCiAgIC0gVGhlIFFSIGxpYnJhcnkgKGNkbmpzKSBpcyBOT1QgY2FjaGVkIGFzIGEgZ3VhcmFudGVlIOKAlCBpZiBpdCBpcyB1bmF2YWlsYWJsZQogICAgIG9mZmxpbmUsIHRoZSBRUiB0b29sIHNob3dzIGl0cyBvd24gImxpYnJhcnkgdW5hdmFpbGFibGUiIG1lc3NhZ2UuCiAgIE5vdGUgZm9yIEdpdEh1YiBQYWdlcyBkZXBsb3ltZW50OiBjb3B5IHRoaXMgZmlsZSB0byB0aGUgcmVwb3NpdG9yeSBST09UCiAgIG5leHQgdG8gaW5kZXguaHRtbCAoYXMgc3cuanMpIGFuZCByZWdpc3RlciBpdCBhcyAic3cuanMiIHNvIGl0cyBzY29wZQogICBjb3ZlcnMgdGhlIHdob2xlIHNpdGUuIEluIHRoaXMgcHJldmlldyBpdCBsaXZlcyB1bmRlciBhc3NldHMvLgoqLwp2YXIgQ0FDSEUgPSAnc21hcnR0b29scy1odWItdjItcDAnOwp2YXIgQ09SRSA9IFsKICAnLi4vJywKICAnLi4vaW5kZXguaHRtbCcsCiAgJ21hbmlmZXN0LndlYm1hbmlmZXN0JywKICAnaWNvbi0xOTIucG5nJywKICAnaWNvbi01MTIucG5nJywKICAnaWNvbi1tYXNrYWJsZS01MTIucG5nJywKICAnYXBwbGUtdG91Y2gtaWNvbi5wbmcnLAogICdvZmZsaW5lLmh0bWwnCl07CgpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2luc3RhbGwnLCBmdW5jdGlvbiAoZXZlbnQpIHsKICBldmVudC53YWl0VW50aWwoCiAgICBjYWNoZXMub3BlbihDQUNIRSkudGhlbihmdW5jdGlvbiAoY2FjaGUpIHsKICAgICAgLy8gQWRkIG9uZSBieSBvbmUgc28gYSBzaW5nbGUgNDA0IG5ldmVyIGJyZWFrcyBpbnN0YWxsYXRpb24uCiAgICAgIHJldHVybiBQcm9taXNlLmFsbChDT1JFLm1hcChmdW5jdGlvbiAodXJsKSB7CiAgICAgICAgcmV0dXJuIGNhY2hlLmFkZCh1cmwpLmNhdGNoKGZ1bmN0aW9uICgpIHsgLyogc2tpcCBtaXNzaW5nIGVudHJ5ICovIH0pOwogICAgICB9KSk7CiAgICB9KS50aGVuKGZ1bmN0aW9uICgpIHsgcmV0dXJuIHNlbGYuc2tpcFdhaXRpbmcoKTsgfSkKICApOwp9KTsKCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignYWN0aXZhdGUnLCBmdW5jdGlvbiAoZXZlbnQpIHsKICBldmVudC53YWl0VW50aWwoCiAgICBjYWNoZXMua2V5cygpLnRoZW4oZnVuY3Rpb24gKGtleXMpIHsKICAgICAgcmV0dXJuIFByb21pc2UuYWxsKGtleXMubWFwKGZ1bmN0aW9uIChrKSB7CiAgICAgICAgaWYgKGsgIT09IENBQ0hFKSByZXR1cm4gY2FjaGVzLmRlbGV0ZShrKTsKICAgICAgfSkpOwogICAgfSkudGhlbihmdW5jdGlvbiAoKSB7IHJldHVybiBzZWxmLmNsaWVudHMuY2xhaW0oKTsgfSkKICApOwp9KTsKCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignZmV0Y2gnLCBmdW5jdGlvbiAoZXZlbnQpIHsKICB2YXIgcmVxID0gZXZlbnQucmVxdWVzdDsKICBpZiAocmVxLm1ldGhvZCAhPT0gJ0dFVCcpIHJldHVybjsKICB2YXIgdXJsID0gbmV3IFVSTChyZXEudXJsKTsKCiAgLy8gUGFnZSBuYXZpZ2F0aW9uczogbmV0d29yayBmaXJzdCwgY2FjaGUvb2ZmbGluZSBmYWxsYmFjay4KICBpZiAocmVxLm1vZGUgPT09ICduYXZpZ2F0ZScpIHsKICAgIGV2ZW50LnJlc3BvbmRXaXRoKAogICAgICBmZXRjaChyZXEpLnRoZW4oZnVuY3Rpb24gKHJlcykgewogICAgICAgIHZhciBjb3B5ID0gcmVzLmNsb25lKCk7CiAgICAgICAgY2FjaGVzLm9wZW4oQ0FDSEUpLnRoZW4oZnVuY3Rpb24gKGMpIHsgYy5wdXQoJy4uL2luZGV4Lmh0bWwnLCBjb3B5KTsgfSk7CiAgICAgICAgcmV0dXJuIHJlczsKICAgICAgfSkuY2F0Y2goZnVuY3Rpb24gKCkgewogICAgICAgIHJldHVybiBjYWNoZXMubWF0Y2goJy4uL2luZGV4Lmh0bWwnKS50aGVuKGZ1bmN0aW9uIChoaXQpIHsKICAgICAgICAgIHJldHVybiBoaXQgfHwgY2FjaGVzLm1hdGNoKCdvZmZsaW5lLmh0bWwnKTsKICAgICAgICB9KTsKICAgICAgfSkKICAgICk7CiAgICByZXR1cm47CiAgfQoKICAvLyBHb29nbGUgRm9udHM6IHN0YWxlLXdoaWxlLXJldmFsaWRhdGUuCiAgaWYgKHVybC5ob3N0bmFtZSA9PT0gJ2ZvbnRzLmdvb2dsZWFwaXMuY29tJyB8fCB1cmwuaG9zdG5hbWUgPT09ICdmb250cy5nc3RhdGljLmNvbScpIHsKICAgIGV2ZW50LnJlc3BvbmRXaXRoKAogICAgICBjYWNoZXMub3BlbihDQUNIRSkudGhlbihmdW5jdGlvbiAoY2FjaGUpIHsKICAgICAgICByZXR1cm4gY2FjaGUubWF0Y2gocmVxKS50aGVuKGZ1bmN0aW9uIChoaXQpIHsKICAgICAgICAgIHZhciBuZXQgPSBmZXRjaChyZXEpLnRoZW4oZnVuY3Rpb24gKHJlcykgeyBjYWNoZS5wdXQocmVxLCByZXMuY2xvbmUoKSk7IHJldHVybiByZXM7IH0pLmNhdGNoKGZ1bmN0aW9uICgpIHsgcmV0dXJuIGhpdDsgfSk7CiAgICAgICAgICByZXR1cm4gaGl0IHx8IG5ldDsKICAgICAgICB9KTsKICAgICAgfSkKICAgICk7CiAgICByZXR1cm47CiAgfQoKICAvLyBTYW1lLW9yaWdpbiBzdGF0aWMgYXNzZXRzOiBjYWNoZS1maXJzdC4KICBpZiAodXJsLm9yaWdpbiA9PT0gc2VsZi5sb2NhdGlvbi5vcmlnaW4pIHsKICAgIGV2ZW50LnJlc3BvbmRXaXRoKAogICAgICBjYWNoZXMubWF0Y2gocmVxKS50aGVuKGZ1bmN0aW9uIChoaXQpIHsKICAgICAgICBpZiAoaGl0KSByZXR1cm4gaGl0OwogICAgICAgIHJldHVybiBmZXRjaChyZXEpLnRoZW4oZnVuY3Rpb24gKHJlcykgewogICAgICAgICAgdmFyIGNvcHkgPSByZXMuY2xvbmUoKTsKICAgICAgICAgIGNhY2hlcy5vcGVuKENBQ0hFKS50aGVuKGZ1bmN0aW9uIChjKSB7IGMucHV0KHJlcSwgY29weSk7IH0pOwogICAgICAgICAgcmV0dXJuIHJlczsKICAgICAgICB9KTsKICAgICAgfSkKICAgICk7CiAgfQogIC8vIEV2ZXJ5dGhpbmcgZWxzZSAoZS5nLiBjZG5qcyBRUiBsaWJyYXJ5KTogZ28gdG8gbmV0d29yaywgbm8gZm9yY2VkIGNhY2hpbmcuCn0pOwo='); })
+      .then(function(reg){
+        swSettled=true;
+        if(reg) setPwaStatus('App ready: service worker registered (scope: '+reg.scope+'). Offline use is on after this visit — install via the button or your browser menu.');
+      })
+      .catch(function(){
+        swSettled=true;
+        setPwaStatus('Install via your browser menu: ⋮ → Install app / Add to Home Screen. (Service worker could not register in this browser context.)');
+      });
+  });
+} else {
+  setPwaStatus('Install via your browser menu: ⋮ → Add to Home Screen. (This browser has no service-worker support; tools still work normally.)');
+}
+window.addEventListener('beforeinstallprompt', function(e){
+  e.preventDefault(); window._deferredInstall=e;
+  var b=$('installBtn'); if(b) b.style.display='inline-flex';
+  setPwaStatus('Ready to install — tap Install app, or use your browser menu.');
+});
+function installApp(){
+  var evt=window._deferredInstall;
+  if(evt){
+    // Standard PWA install API: shows the browser's own install dialog.
+    evt.prompt();
+    evt.userChoice.then(function(choice){
+      if(choice.outcome==='accepted') setPwaStatus('Installing… SmartTools Hub will appear on your home screen.');
+      window._deferredInstall=null; var b=$('installBtn'); if(b) b.style.display='none';
+    });
+  } else {
+    toast('Use browser menu → Install app / Add to Home Screen');
+    setPwaStatus('Use your browser menu: ⋮ → Install app / Add to Home Screen.');
+  }
+}
+window.addEventListener('appinstalled', function(){ setPwaStatus('Installed — open SmartTools Hub from your home screen anytime.'); var b=$('installBtn'); if(b) b.style.display='none'; toast('SmartTools Hub installed'); });
+function syncOfflineBar(){ var bar=$('offlineBar'); if(bar) bar.classList.toggle('show', !navigator.onLine); }
+window.addEventListener('online', syncOfflineBar);
+window.addEventListener('offline', syncOfflineBar);
+syncOfflineBar();
 
 renderCats(); renderGrid();
 </script>

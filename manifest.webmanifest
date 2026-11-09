@@ -1,0 +1,55 @@
+{
+  "background_color": "#f6f7f4",
+  "categories": [
+    "utilities",
+    "productivity"
+  ],
+  "description": "Free online calculators, converters and generators. No sign-up. Tools run on your device.",
+  "display": "standalone",
+  "icons": [
+    {
+      "purpose": "any",
+      "sizes": "144x144",
+      "src": "icon-144.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "192x192",
+      "src": "icon-192.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "256x256",
+      "src": "icon-256.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "384x384",
+      "src": "icon-384.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "icon-512.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "icon-maskable-512.png",
+      "type": "image/png"
+    }
+  ],
+  "id": "./",
+  "lang": "en",
+  "name": "SmartTools Hub \u2014 Free Online Tools",
+  "orientation": "portrait-primary",
+  "scope": "./",
+  "short_name": "SmartTools Hub",
+  "start_url": "./",
+  "theme_color": "#0a7a5e"
+}
