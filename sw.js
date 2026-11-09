@@ -5,14 +5,20 @@
    - Google Fonts: stale-while-revalidate (fonts are decorative; tools work without them).
    - The QR library (cdnjs) is NOT cached as a guarantee — if it is unavailable
      offline, the QR tool shows its own "library unavailable" message.
-   Note for GitHub Pages deployment: copy this file to the repository ROOT
-   next to index.html (as sw.js) and register it as "sw.js" so its scope
-   covers the whole site. In this preview it lives under assets/.
+   Deployed at the GitHub Pages project root:
+   https://mzam60340-stack.github.io/smarttools-hub/sw.js
+   Scope is /smarttools-hub/ — all cache paths below are relative to this
+   file, so './' and './index.html' stay inside the scope. (P0 used
+   parent-directory paths, which resolved to the github.io account root,
+   outside the scope.)
+   Privacy: this worker handles GET requests only and caches the app shell,
+   fonts and same-origin static assets. It never caches passwords, tool
+   inputs, uploaded files, or any user data.
 */
-var CACHE = 'smarttools-hub-v2-p0';
+var CACHE = 'smarttools-hub-v3-p0closure';
 var CORE = [
-  '../',
-  '../index.html',
+  './',
+  './index.html',
   'manifest.webmanifest',
   'icon-192.png',
   'icon-512.png',
@@ -52,10 +58,10 @@ self.addEventListener('fetch', function (event) {
     event.respondWith(
       fetch(req).then(function (res) {
         var copy = res.clone();
-        caches.open(CACHE).then(function (c) { c.put('../index.html', copy); });
+        caches.open(CACHE).then(function (c) { c.put('./index.html', copy); });
         return res;
       }).catch(function () {
-        return caches.match('../index.html').then(function (hit) {
+        return caches.match('./index.html').then(function (hit) {
           return hit || caches.match('offline.html');
         });
       })
